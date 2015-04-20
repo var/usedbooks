@@ -10,7 +10,6 @@
 #import "EditViewController.h"
 #import "ListViewController.h"
 #import "ListingViewController.h"
-#import "ParseViewController.h"
 #import "MasterViewController.h"
 
 @interface SplashViewController ()
