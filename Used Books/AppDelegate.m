@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 #import "DetailViewController.h"
+#import "MasterViewController.h"
+#import "ListViewController.h"
+#import "SplashViewController.h"
+#import <Parse/Parse.h>
 
 @interface AppDelegate ()
 
@@ -18,6 +22,20 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [Parse enableLocalDatastore];
+    
+    // Initialize Parse.
+    [Parse setApplicationId:@"QD3EJaC80QfkW07EsuCmH6WNPv2ZPasEki8ujf93"
+                  clientKey:@"s9hXowOQ1bjj0NlobscVLIsOwkur2KevLXq6Dapj"];
+    
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    SplashViewController *viewController =
+    [[SplashViewController alloc] init];
+    
+    self.window.rootViewController = viewController;
     return YES;
 }
 
@@ -25,6 +43,14 @@
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
+
+//- (void)applicationDidFinishLaunching:(UIApplication *)application
+//{
+//    navController=[[UINavigationController alloc] init];
+//    MasterViewController *firstController=[[MasterViewController alloc] init];
+//    [navController pushViewController:firstController animated:NO];
+//    [_window addSubview navController.view];
+//}
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.

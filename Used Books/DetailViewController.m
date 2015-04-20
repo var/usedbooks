@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import <Parse/Parse.h>
 
 @interface DetailViewController ()
 
@@ -16,7 +17,7 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem {
+- (void)setDetailItem:(PFObject*)newDetailItem {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
             
@@ -28,12 +29,18 @@
 - (void)configureView {
     // Update the user interface for the detail item.
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        self.detailDescriptionLabel.text = self.detailItem;
     }
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+//    PFQuery *query = [PFQuery queryWithClassName:@"Book"];
+//    [query getObjectInBackgroundWithId:@"xWMyZ4YEGZ" block:^(PFObject *gameScore, NSError *error) {
+//        // Do something with the returned PFObject in the gameScore variable.
+//        NSLog(@"%@", gameScore);
+//    }];
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
 }
